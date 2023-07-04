@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/common/snackbar_global.dart';
-import 'package:mint_front_end/features/home/screens/home_screen.dart';
+
+import 'features/user/main/screens/user_main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const UserMain(),
     );
   }
 }
