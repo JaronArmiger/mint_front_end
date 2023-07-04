@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/bottom_bar_icons/
+    - assets/images/produce_icons/
   # - assets/images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
