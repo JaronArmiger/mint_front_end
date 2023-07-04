@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mint_front_end/features/user/home/screens/home_screen.dart';
 
 import '../../../../constants/global_variables.dart';
 
@@ -15,9 +16,7 @@ class _UserMainState extends State<UserMain> {
   double bottomBarBorderWidth = 5;
 
   List<Widget> pages = [
-    const Center(
-      child: Text('Home'),
-    ),
+    const HomeScreen(),
     const Center(
       child: Text('Messages'),
     ),
@@ -52,20 +51,19 @@ class _UserMainState extends State<UserMain> {
             ),
           ),
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                 'assets/images/mint_logo_01.png',
-                width: 120,
-                height: 45,
-                color: Colors.black,
+                width: 40,
               ),
+              const SizedBox(width: 20),
               const Text(
                 'mint',
                 style: TextStyle(
                   color: GlobalVariables.darkGreen,
                   fontWeight: FontWeight.bold,
-                  fontSize: 30,
+                  fontSize: 40,
                 ),
               ),
             ],
