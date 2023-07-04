@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/common/snackbar_global.dart';
 
+import 'constants/global_variables.dart';
 import 'features/user/main/screens/user_main.dart';
 
 void main() {
@@ -17,7 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Mint',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        fontFamily: 'Montserrat',
+        colorScheme:
+            const ColorScheme.light(primary: GlobalVariables.lightGreen),
         useMaterial3: true,
       ),
       home: const UserMain(),

@@ -83,22 +83,36 @@ class _UserMainState extends State<UserMain> {
         items: [
           // HOME
           BottomNavigationBarItem(
-            icon: Container(
+            icon: SizedBox(
               width: bottomBarWidth,
-              child: Icon(
-                Icons.home_outlined,
-                size: _page == 0 ? 40 : 28,
+              height: _page == 0 ? 45 : 25,
+              child: const ImageIcon(
+                AssetImage('assets/images/bottom_bar_icons/home.png'),
+                // size: _page == 1 ? 40 : 28,
               ),
             ),
             label: '',
           ),
           // MESSAGES
           BottomNavigationBarItem(
-            icon: Container(
+            icon: SizedBox(
               width: bottomBarWidth,
-              child: Icon(
-                Icons.home_outlined,
-                size: _page == 1 ? 40 : 28,
+              height: _page == 1 ? 45 : 25,
+              child: const ImageIcon(
+                AssetImage('assets/images/bottom_bar_icons/messages.png'),
+                // size: _page == 1 ? 40 : 28,
+              ),
+            ),
+            label: '',
+          ),
+          // MARKET
+          BottomNavigationBarItem(
+            icon: SizedBox(
+              width: bottomBarWidth,
+              height: _page == 2 ? 45 : 25,
+              child: const ImageIcon(
+                AssetImage('assets/images/bottom_bar_icons/market.png'),
+                // size: _page == 1 ? 40 : 28,
               ),
             ),
             label: '',
