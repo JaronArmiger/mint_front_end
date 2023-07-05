@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/common/snackbar_global.dart';
+import 'package:mint_front_end/router.dart';
 
 import 'constants/global_variables.dart';
 import 'features/user/main/screens/user_main.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
             const ColorScheme.light(primary: GlobalVariables.lightGreen),
         useMaterial3: true,
       ),
+      onGenerateRoute: (settings) => generateRoute(settings),
       home: const UserMain(),
     );
   }

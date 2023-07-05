@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/constants/global_variables.dart';
 
-class QuickShop extends StatefulWidget {
+import '../screens/produce_category_screen.dart';
+
+class QuickShop extends StatelessWidget {
   const QuickShop({super.key});
 
-  @override
-  State<QuickShop> createState() => _QuickShopState();
-}
+  void navigateToCategoryPage(BuildContext context, String category) {
+    Navigator.pushNamed(context, ProduceCategoryScreen.routeName,
+        arguments: category);
+  }
 
-class _QuickShopState extends State<QuickShop> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +20,7 @@ class _QuickShopState extends State<QuickShop> {
           padding: EdgeInsets.only(left: 18.0),
           child: Text(
             'Shop for...',
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 18,
             ),
@@ -32,7 +34,8 @@ class _QuickShopState extends State<QuickShop> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: () {},
+                onTap: () => navigateToCategoryPage(context,
+                    GlobalVariables.produceCategories[index]['title']!),
                 child: Column(
                   children: [
                     Container(
