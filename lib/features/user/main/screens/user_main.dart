@@ -4,6 +4,7 @@ import 'package:mint_front_end/features/user/home/screens/home_screen.dart';
 import '../../../../constants/global_variables.dart';
 
 class UserMain extends StatefulWidget {
+  static const String routeName = '/user-main';
   const UserMain({super.key});
 
   @override

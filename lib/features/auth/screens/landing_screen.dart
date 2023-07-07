@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/constants/global_variables.dart';
+import 'package:mint_front_end/features/auth/screens/signin_screen.dart';
 import 'package:mint_front_end/features/auth/screens/signup_screen.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -10,8 +11,12 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> {
-  void navigateToSignupScreenA() {
-    Navigator.pushNamed(context, SignupScreen.routeName);
+  void navigateToSignupScreen() {
+    Navigator.pushNamed(context, SignUpScreen.routeName);
+  }
+
+  void navigateToSigninScreen() {
+    Navigator.pushNamed(context, SignInScreen.routeName);
   }
 
   @override
@@ -51,7 +56,7 @@ class _LandingScreenState extends State<LandingScreen> {
                         height: 60,
                         width: 180,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: navigateToSigninScreen,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: GlobalVariables.darkGreen,
                             elevation: 0,
@@ -74,7 +79,7 @@ class _LandingScreenState extends State<LandingScreen> {
                         height: 60,
                         width: 180,
                         child: ElevatedButton(
-                          onPressed: navigateToSignupScreenA,
+                          onPressed: navigateToSignupScreen,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             elevation: 0,
