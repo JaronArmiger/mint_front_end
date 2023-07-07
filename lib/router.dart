@@ -13,11 +13,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         builder: (_) => const UserMain(),
       );
     case ProduceCategoryScreen.routeName:
-      var category = routeSettings.arguments as String;
+      var categoryId = routeSettings.arguments as String;
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => ProduceCategoryScreen(
-          category: category,
+          categoryId: categoryId,
         ),
       );
     case SignUpScreen.routeName:

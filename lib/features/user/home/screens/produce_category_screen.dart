@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:mint_front_end/features/user/home/screens/produce_item.dart';
+import 'package:mint_front_end/features/user/home/services/home_service.dart';
 
+import '../../../../common/widgets/loader.dart';
 import '../../../../constants/global_variables.dart';
 import '../../../../models/product.dart';
 
 class ProduceCategoryScreen extends StatefulWidget {
   static const String routeName = '/produce-category';
-  final String category;
+  final String categoryId;
   const ProduceCategoryScreen({
     super.key,
-    required this.category,
+    required this.categoryId,
   });
 
   @override
@@ -16,7 +19,27 @@ class ProduceCategoryScreen extends StatefulWidget {
 }
 
 class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
-  List<Product>? products;
+  List<Product>? productList;
+  final HomeService homeService = HomeService();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCategory();
+    fetchCategoryProducts();
+  }
+
+  void fetchCategory() async {}
+
+  void fetchCategoryProducts() async {
+    productList = await homeService.fetchCategoryProducts(
+      context: context,
+      categoryId: widget.categoryId,
+    );
+    if (mounted) {
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,15 +72,23 @@ class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              children: [],
-            )
-          ],
-        ),
-      ),
+      body: productList == null
+          ? const Loader()
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  Row(
+                    children: [],
+                  ),
+                  ListView.builder(
+                    itemCount: productList!.length,
+                    itemBuilder: (context, index) {
+                      return ProduceItem(index: index);
+                    },
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }
