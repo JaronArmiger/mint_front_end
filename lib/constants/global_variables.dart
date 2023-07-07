@@ -7,6 +7,8 @@ class GlobalVariables {
       Color.fromARGB(255, 84, 235, 167),
     ],
     stops: [0.1, 0.8],
+    begin: Alignment(0, -1),
+    end: Alignment(0, 1),
   );
 
   // static const lightGreen = Color.fromRGBO(152, 235, 180, 1);
