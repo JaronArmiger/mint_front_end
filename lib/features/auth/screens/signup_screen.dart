@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/common/widgets/custom_textfield.dart';
+import 'package:mint_front_end/features/auth/services/auth_service.dart';
 
 import '../../../constants/global_variables.dart';
 
@@ -12,6 +13,8 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final AuthService authService = AuthService();
+
   final _signUpFormKey = GlobalKey<FormState>();
 
   final TextEditingController _firstNameController = TextEditingController();
@@ -33,7 +36,16 @@ class _SignupScreenState extends State<SignupScreen> {
     // _passwordConfirmController.dispose();
   }
 
-  void signUpUser() {}
+  void signUpUser() {
+    authService.signUpUser(
+      context: context,
+      firstName: _firstNameController.text,
+      lastName: _lastNameController.text,
+      email: _emailController.text,
+      phoneNumber: _phoneNumberController.text,
+      password: _passwordController.text,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +118,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       SizedBox(
                         height: 50,
                         child: CustomTextField(
-                          controller: _firstNameController,
+                          controller: _lastNameController,
                           hintText: 'Ex: Kahlo',
                         ),
                       ),
@@ -154,7 +166,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       SizedBox(
                         height: 50,
                         child: CustomTextField(
-                          controller: _phoneNumberController,
+                          controller: _passwordController,
                           hintText: 'Ex: scoobyDOO??29',
                         ),
                       ),
@@ -166,7 +178,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   height: 60,
                   width: 180,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: signUpUser,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: GlobalVariables.darkGreen,
                       elevation: 0,
