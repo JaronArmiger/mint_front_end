@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/constants/global_variables.dart';
-import 'package:mint_front_end/features/auth/screens/signup_screen_a.dart';
+import 'package:mint_front_end/features/auth/screens/signup_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -11,7 +11,7 @@ class LandingScreen extends StatefulWidget {
 
 class _LandingScreenState extends State<LandingScreen> {
   void navigateToSignupScreenA() {
-    Navigator.pushNamed(context, SignupScreenA.routeName);
+    Navigator.pushNamed(context, SignupScreen.routeName);
   }
 
   @override

@@ -3,15 +3,15 @@ import 'package:mint_front_end/common/widgets/custom_textfield.dart';
 
 import '../../../constants/global_variables.dart';
 
-class SignupScreenA extends StatefulWidget {
+class SignupScreen extends StatefulWidget {
   static const String routeName = '/signup-screen-a';
-  const SignupScreenA({super.key});
+  const SignupScreen({super.key});
 
   @override
-  State<SignupScreenA> createState() => _SignupScreenAState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _SignupScreenAState extends State<SignupScreenA> {
+class _SignupScreenState extends State<SignupScreen> {
   final _signUpFormKey = GlobalKey<FormState>();
 
   final TextEditingController _firstNameController = TextEditingController();
@@ -175,7 +175,7 @@ class _SignupScreenAState extends State<SignupScreenA> {
                       ),
                     ),
                     child: const Text(
-                      'Sign In',
+                      'Complete',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
