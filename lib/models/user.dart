@@ -9,6 +9,7 @@ class User {
   final String password;
   final String address;
   final String role;
+  final String token;
 
   User({
     required this.id,
@@ -19,6 +20,7 @@ class User {
     required this.password,
     required this.address,
     required this.role,
+    required this.token,
   });
 
   Map<String, dynamic> toMap() {
@@ -31,6 +33,7 @@ class User {
       'password': password,
       'address': address,
       'role': role,
+      'token': token,
     };
   }
 
@@ -44,6 +47,7 @@ class User {
       password: map['password'] ?? '',
       address: map['address'] ?? '',
       role: map['role'] ?? '',
+      token: map['token'] ?? '',
     );
   }
 
@@ -60,6 +64,7 @@ class User {
     String? password,
     String? address,
     String? role,
+    String? token,
   }) {
     return User(
       id: id ?? this.id,
@@ -70,6 +75,7 @@ class User {
       password: password ?? this.password,
       address: address ?? this.address,
       role: role ?? this.role,
+      token: token ?? this.token,
     );
   }
 }

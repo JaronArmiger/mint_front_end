@@ -12,6 +12,7 @@ class UserProvider extends ChangeNotifier {
     password: '',
     address: '',
     role: '',
+    token: '',
   );
 
   User get user => _user;

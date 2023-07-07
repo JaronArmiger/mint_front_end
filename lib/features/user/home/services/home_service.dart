@@ -1,15 +1,23 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mint_front_end/constants/error_handling.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../common/snackbar_global.dart';
 import '../../../../constants/env_vars.dart';
 import '../../../../models/product.dart';
+import '../../../../providers/user_provider.dart';
 
 class HomeService {
   Future<List<Product>> fetchCategoryProducts({
     required BuildContext context,
     required String categoryId,
   }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Product> productList = [];
 
     try {
@@ -18,11 +26,29 @@ class HomeService {
             '$uri/api/category/products-by-category?category=$categoryId'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
-          // 'x-'
+          'x-auth-token': userProvider.user.token,
+        },
+      );
+
+      var decodedRes = jsonDecode(res.body);
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          for (int i = 0; i < decodedRes.length; i++) {
+            productList.add(
+              Product.fromJson(
+                jsonEncode(decodedRes[i]),
+              ),
+            );
+          }
         },
       );
     } catch (e) {
       SnackbarGlobal.show(e.toString());
     }
+
+    return productList;
   }
 }
