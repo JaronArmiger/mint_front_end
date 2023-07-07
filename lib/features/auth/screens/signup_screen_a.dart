@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mint_front_end/common/widgets/custom_textfield.dart';
 
 import '../../../constants/global_variables.dart';
 
@@ -18,8 +19,8 @@ class _SignupScreenAState extends State<SignupScreenA> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordConfirmController =
-      TextEditingController();
+  // final TextEditingController _passwordConfirmController =
+  //     TextEditingController();
 
   @override
   void dispose() {
@@ -29,7 +30,7 @@ class _SignupScreenAState extends State<SignupScreenA> {
     _emailController.dispose();
     _phoneNumberController.dispose();
     _passwordController.dispose();
-    _passwordConfirmController.dispose();
+    // _passwordConfirmController.dispose();
   }
 
   void signUpUser() {}
@@ -65,14 +66,127 @@ class _SignupScreenAState extends State<SignupScreenA> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Text(
-              'Sign Up',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          child: Form(
+            key: _signUpFormKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'First Name',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        height: 50,
+                        child: CustomTextField(
+                          controller: _firstNameController,
+                          hintText: 'Ex: Frida',
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Last Name',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        height: 50,
+                        child: CustomTextField(
+                          controller: _firstNameController,
+                          hintText: 'Ex: Kahlo',
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Email',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        height: 50,
+                        child: CustomTextField(
+                          controller: _emailController,
+                          hintText: 'Ex: fridakahlo@coyoacan.com',
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Phone Number',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        height: 50,
+                        child: CustomTextField(
+                          controller: _phoneNumberController,
+                          hintText: 'Ex: 6789998212',
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Password',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        height: 50,
+                        child: CustomTextField(
+                          controller: _phoneNumberController,
+                          hintText: 'Ex: scoobyDOO??29',
+                        ),
+                      ),
+                      const SizedBox(height: 40),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 60,
+                  width: 180,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: GlobalVariables.darkGreen,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: const Text(
+                      'Sign In',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 23,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

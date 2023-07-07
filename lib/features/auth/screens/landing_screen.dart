@@ -80,7 +80,7 @@ class _LandingScreenState extends State<LandingScreen> {
                             elevation: 0,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
-                              side: BorderSide(
+                              side: const BorderSide(
                                 color: GlobalVariables.darkGreen,
                                 width: 2,
                               ),
