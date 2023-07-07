@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/common/snackbar_global.dart';
+import 'package:mint_front_end/features/auth/screens/landing_screen.dart';
 import 'package:mint_front_end/router.dart';
 
 import 'constants/global_variables.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: const UserMain(),
+      home: const LandingScreen(),
     );
   }
 }
