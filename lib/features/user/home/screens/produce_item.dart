@@ -14,6 +14,6 @@ class ProduceItem extends StatefulWidget {
 class _ProduceItemState extends State<ProduceItem> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Text(widget.index.toString());
   }
 }

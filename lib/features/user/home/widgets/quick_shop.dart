@@ -1,14 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/constants/global_variables.dart';
 
+import '../../../../models/category.dart';
+import '../../../../models/product.dart';
 import '../screens/produce_category_screen.dart';
+import '../services/home_service.dart';
 
-class QuickShop extends StatelessWidget {
+class QuickShop extends StatefulWidget {
   const QuickShop({super.key});
+
+  @override
+  State<QuickShop> createState() => _QuickShopState();
+}
+
+class _QuickShopState extends State<QuickShop> {
+  final HomeService homeService = HomeService();
+  List<Category>? categories;
 
   void navigateToCategoryPage(BuildContext context, String category) {
     Navigator.pushNamed(context, ProduceCategoryScreen.routeName,
         arguments: category);
+  }
+
+  void fetchCategoryProducts() async {
+    categories = await homeService.fetchAllCategories(
+      context: context,
+    );
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override

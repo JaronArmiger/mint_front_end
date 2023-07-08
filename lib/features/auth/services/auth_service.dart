@@ -33,6 +33,7 @@ class AuthService {
         password: password,
         address: '',
         role: '',
+        token: '',
       );
 
       http.Response res = await http.post(
@@ -68,6 +69,7 @@ class AuthService {
     required String password,
   }) async {
     try {
+      print("heelo");
       http.Response res = await http.post(
         Uri.parse('$uri/api/auth/signin'),
         headers: {'Content-Type': 'application/json; charset=UTF-8'},
@@ -86,7 +88,7 @@ class AuthService {
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
 
           SnackbarGlobal.show(
-            'Signing you in...',
+            'Welcome...',
           );
 
           if (context.mounted) {

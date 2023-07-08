@@ -4,6 +4,7 @@ import 'package:mint_front_end/features/user/home/services/home_service.dart';
 
 import '../../../../common/widgets/loader.dart';
 import '../../../../constants/global_variables.dart';
+import '../../../../models/category.dart';
 import '../../../../models/product.dart';
 
 class ProduceCategoryScreen extends StatefulWidget {
@@ -20,6 +21,7 @@ class ProduceCategoryScreen extends StatefulWidget {
 
 class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
   List<Product>? productList;
+  Category? category;
   final HomeService homeService = HomeService();
 
   @override
@@ -29,7 +31,13 @@ class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
     fetchCategoryProducts();
   }
 
-  void fetchCategory() async {}
+  void fetchCategory() async {
+    category = await homeService.fetchCategory(
+        context: context, categoryId: widget.categoryId);
+    if (mounted) {
+      setState(() {});
+    }
+  }
 
   void fetchCategoryProducts() async {
     productList = await homeService.fetchCategoryProducts(
@@ -72,23 +80,28 @@ class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
           ),
         ),
       ),
-      body: productList == null
-          ? const Loader()
-          : SingleChildScrollView(
-              child: Column(
-                children: [
-                  Row(
-                    children: [],
-                  ),
-                  ListView.builder(
-                    itemCount: productList!.length,
-                    itemBuilder: (context, index) {
-                      return ProduceItem(index: index);
-                    },
-                  ),
-                ],
-              ),
-            ),
+      body: category == null ? const Text('hello') : Text(category!.name),
+      // body: productList == null
+      //     ? const Loader()
+      //     : SingleChildScrollView(
+      //         child: Column(
+      //           children: [
+      //             Row(
+      //               children: [
+      //                 const Text('heello'),
+      //                 Image.asset(category!.image),
+      //                 Text(category!.name),
+      //               ],
+      //             ),
+      //             ListView.builder(
+      //               itemCount: productList!.length,
+      //               itemBuilder: (context, index) {
+      //                 return ProduceItem(index: index);
+      //               },
+      //             ),
+      //           ],
+      //         ),
+      //       ),
     );
   }
 }
