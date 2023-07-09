@@ -9,10 +9,10 @@ import '../../../../models/product.dart';
 
 class ProduceCategoryScreen extends StatefulWidget {
   static const String routeName = '/produce-category';
-  final String categoryId;
+  final Map<String, String> category;
   const ProduceCategoryScreen({
     super.key,
-    required this.categoryId,
+    required this.category,
   });
 
   @override
@@ -21,28 +21,27 @@ class ProduceCategoryScreen extends StatefulWidget {
 
 class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
   List<Product>? productList;
-  Category? category;
   final HomeService homeService = HomeService();
 
   @override
   void initState() {
     super.initState();
-    fetchCategory();
-    fetchCategoryProducts();
+    // fetchCategory();
+    // fetchCategoryProducts();
   }
 
-  void fetchCategory() async {
-    category = await homeService.fetchCategory(
-        context: context, categoryId: widget.categoryId);
-    if (mounted) {
-      setState(() {});
-    }
-  }
+  // void fetchCategory() async {
+  //   category = await homeService.fetchCategory(
+  //       context: context, categoryName: widget.categoryName);
+  //   if (mounted) {
+  //     setState(() {});
+  //   }
+  // }
 
   void fetchCategoryProducts() async {
     productList = await homeService.fetchCategoryProducts(
       context: context,
-      categoryId: widget.categoryId,
+      categoryName: widget.category['title']!,
     );
     if (mounted) {
       setState(() {});
@@ -80,28 +79,33 @@ class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
           ),
         ),
       ),
-      body: category == null ? const Text('hello') : Text(category!.name),
-      // body: productList == null
-      //     ? const Loader()
-      //     : SingleChildScrollView(
-      //         child: Column(
-      //           children: [
-      //             Row(
-      //               children: [
-      //                 const Text('heello'),
-      //                 Image.asset(category!.image),
-      //                 Text(category!.name),
-      //               ],
-      //             ),
-      //             ListView.builder(
-      //               itemCount: productList!.length,
-      //               itemBuilder: (context, index) {
-      //                 return ProduceItem(index: index);
-      //               },
-      //             ),
-      //           ],
-      //         ),
-      //       ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  widget.category['image']!,
+                  width: 80,
+                ),
+                const SizedBox(
+                  width: 40,
+                ),
+                Text(widget.category['title']!),
+              ],
+            ),
+            productList == null
+                ? const Loader()
+                : ListView.builder(
+                    itemCount: productList!.length,
+                    itemBuilder: (context, index) {
+                      return ProduceItem(index: index);
+                    },
+                  ),
+          ],
+        ),
+      ),
     );
   }
 }

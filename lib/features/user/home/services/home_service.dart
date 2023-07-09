@@ -51,7 +51,7 @@ class HomeService {
 
   Future<Category> fetchCategory({
     required BuildContext context,
-    required String categoryId,
+    required String categoryName,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     Category category =
@@ -59,7 +59,7 @@ class HomeService {
 
     try {
       http.Response res = await http.get(
-        Uri.parse('$uri/api/category/single-category?category=$categoryId'),
+        Uri.parse('$uri/api/category/single-category/$categoryName'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
@@ -84,15 +84,14 @@ class HomeService {
 
   Future<List<Product>> fetchCategoryProducts({
     required BuildContext context,
-    required String categoryId,
+    required String categoryName,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Product> productList = [];
 
     try {
       http.Response res = await http.get(
-        Uri.parse(
-            '$uri/api/category/products-by-category?category=$categoryId'),
+        Uri.parse('$uri/api/category/products-by-category/categoryName'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,

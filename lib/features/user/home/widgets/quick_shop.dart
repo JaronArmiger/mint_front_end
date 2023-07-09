@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mint_front_end/constants/global_variables.dart';
 
 import '../../../../models/category.dart';
-import '../../../../models/product.dart';
 import '../screens/produce_category_screen.dart';
 import '../services/home_service.dart';
 
@@ -17,12 +16,25 @@ class _QuickShopState extends State<QuickShop> {
   final HomeService homeService = HomeService();
   List<Category>? categories;
 
-  void navigateToCategoryPage(BuildContext context, String category) {
-    Navigator.pushNamed(context, ProduceCategoryScreen.routeName,
-        arguments: category);
+  @override
+  void initState() {
+    super.initState();
+    // fetchAllCategories();
   }
 
-  void fetchCategoryProducts() async {
+  void navigateToCategoryPage(
+    BuildContext context,
+    Map<String, String> category,
+  ) {
+    print(category);
+    Navigator.pushNamed(
+      context,
+      ProduceCategoryScreen.routeName,
+      arguments: category,
+    );
+  }
+
+  void fetchAllCategories() async {
     categories = await homeService.fetchAllCategories(
       context: context,
     );
@@ -54,8 +66,10 @@ class _QuickShopState extends State<QuickShop> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: () => navigateToCategoryPage(context,
-                    GlobalVariables.produceCategories[index]['title']!),
+                onTap: () => navigateToCategoryPage(
+                  context,
+                  GlobalVariables.produceCategories[index],
+                ),
                 child: Column(
                   children: [
                     Container(
