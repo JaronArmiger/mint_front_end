@@ -24,71 +24,71 @@ class GlobalVariables {
 
   static const List<Map<String, String>> produceCategories = [
     {
-      'title': 'apples',
+      'title': 'Apples',
       'image': 'assets/images/produce_icons/apples.png',
     },
     {
-      'title': 'avocados',
+      'title': 'Avocados',
       'image': 'assets/images/produce_icons/avocados.png',
     },
     {
-      'title': 'bananas',
+      'title': 'Bananas',
       'image': 'assets/images/produce_icons/bananas.png',
     },
     {
-      'title': 'blueberries',
+      'title': 'Blueberries',
       'image': 'assets/images/produce_icons/blueberries.png',
     },
     {
-      'title': 'broccoli',
+      'title': 'Broccoli',
       'image': 'assets/images/produce_icons/broccoli.png',
     },
     {
-      'title': 'cabbage',
+      'title': 'Cabbage',
       'image': 'assets/images/produce_icons/cabbage.png',
     },
     {
-      'title': 'carrots',
+      'title': 'Carrots',
       'image': 'assets/images/produce_icons/carrots.png',
     },
     {
-      'title': 'corn',
+      'title': 'Corn',
       'image': 'assets/images/produce_icons/corn.png',
     },
     {
-      'title': 'kale',
+      'title': 'Kale',
       'image': 'assets/images/produce_icons/kale.png',
     },
     {
-      'title': 'lemons',
+      'title': 'Lemons',
       'image': 'assets/images/produce_icons/lemons.png',
     },
     {
-      'title': 'lettuce',
+      'title': 'Lettuce',
       'image': 'assets/images/produce_icons/lettuce.png',
     },
     {
-      'title': 'oranges',
+      'title': 'Oranges',
       'image': 'assets/images/produce_icons/oranges.png',
     },
     {
-      'title': 'pears',
+      'title': 'Pears',
       'image': 'assets/images/produce_icons/pears.png',
     },
     {
-      'title': 'pumpkins',
+      'title': 'Pumpkins',
       'image': 'assets/images/produce_icons/pumpkins.png',
     },
     {
-      'title': 'squash',
+      'title': 'Squash',
       'image': 'assets/images/produce_icons/squash.png',
     },
     {
-      'title': 'strawberries',
+      'title': 'Strawberries',
       'image': 'assets/images/produce_icons/strawberries.png',
     },
     {
-      'title': 'tomatoes',
+      'title': 'Tomatoes',
       'image': 'assets/images/produce_icons/tomatoes.png',
     },
   ];
