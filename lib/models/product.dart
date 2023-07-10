@@ -2,6 +2,8 @@ import "dart:convert";
 
 import "package:mint_front_end/models/rating.dart";
 
+import "farm.dart";
+
 class Product {
   final String? id;
   final String name;
@@ -11,7 +13,7 @@ class Product {
   final double price;
   final String priceUnit;
   final String category;
-  final String farm;
+  final Farm farm;
   final List<String> traits;
   final List<Rating>? ratings;
 
@@ -55,7 +57,7 @@ class Product {
       price: map['price']?.toDouble() ?? 0.0,
       priceUnit: map['priceUnit'] ?? '',
       category: map['category'] ?? '',
-      farm: map['farm'] ?? '',
+      farm: Farm.fromMap(map['farm']),
       traits: List<String>.from(map['traits']),
     );
   }
