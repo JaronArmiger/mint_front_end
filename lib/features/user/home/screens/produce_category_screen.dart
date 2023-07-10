@@ -4,7 +4,6 @@ import 'package:mint_front_end/features/user/home/services/home_service.dart';
 
 import '../../../../common/widgets/loader.dart';
 import '../../../../constants/global_variables.dart';
-import '../../../../models/category.dart';
 import '../../../../models/product.dart';
 
 class ProduceCategoryScreen extends StatefulWidget {
@@ -27,7 +26,7 @@ class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
   void initState() {
     super.initState();
     // fetchCategory();
-    // fetchCategoryProducts();
+    fetchCategoryProducts();
   }
 
   // void fetchCategory() async {
@@ -82,25 +81,42 @@ class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  widget.category['image']!,
-                  width: 80,
-                ),
-                const SizedBox(
-                  width: 40,
-                ),
-                Text(widget.category['title']!),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    widget.category['image']!,
+                    width: 80,
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    widget.category['title']!,
+                    style: const TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              color: Colors.black12.withOpacity(0.08),
+              height: 1,
+            ),
+            const SizedBox(
+              height: 20,
             ),
             productList == null
                 ? const Loader()
                 : ListView.builder(
+                    shrinkWrap: true,
                     itemCount: productList!.length,
                     itemBuilder: (context, index) {
-                      return ProduceItem(index: index);
+                      return ProduceItem(product: productList![index]);
                     },
                   ),
           ],

@@ -91,7 +91,7 @@ class HomeService {
 
     try {
       http.Response res = await http.get(
-        Uri.parse('$uri/api/category/products-by-category/categoryName'),
+        Uri.parse('$uri/api/product/products-by-category/$categoryName'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
@@ -116,7 +116,7 @@ class HomeService {
     } catch (e) {
       SnackbarGlobal.show(e.toString());
     }
-
+    print(productList.length);
     return productList;
   }
 }
