@@ -22,6 +22,13 @@ class GlobalVariables {
   static var selectedNavBarColor = Colors.cyan[800]!;
   static const unselectedNavBarColor = Colors.black87;
 
+  static const Map<String, Color> productTraitColors = {
+    "Organic": Color.fromARGB(255, 119, 217, 144),
+    "In Season": Color.fromARGB(255, 237, 229, 138),
+    "End of Season": Color.fromARGB(255, 235, 176, 82),
+    "Ripened": Color.fromARGB(255, 254, 124, 117),
+  };
+
   static const List<Map<String, String>> produceCategories = [
     {
       'title': 'Apples',
