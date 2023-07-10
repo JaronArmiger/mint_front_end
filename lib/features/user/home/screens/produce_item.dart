@@ -112,8 +112,6 @@ class _ProduceItemState extends State<ProduceItem> {
                   ],
                 ),
                 const SizedBox(height: 10),
-
-                // padding: const EdgeInsets.symmetric(horizontal: 10),
                 Text(
                   widget.product.farm.name,
                   style: const TextStyle(
