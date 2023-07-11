@@ -32,7 +32,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: const LandingScreen(),
+      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+          ? const UserMain()
+          : const LandingScreen(),
     );
   }
 }

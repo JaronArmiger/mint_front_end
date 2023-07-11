@@ -11,6 +11,8 @@ class GlobalVariables {
     end: Alignment(0, 1),
   );
 
+  static const cartButtonColor = Color.fromARGB(255, 230, 122, 127);
+
   // static const lightGreen = Color.fromRGBO(152, 235, 180, 1);
   static const lightGreen = Color.fromARGB(255, 84, 235, 167);
   static const darkGreen = Color.fromRGBO(9, 135, 102, 1);
