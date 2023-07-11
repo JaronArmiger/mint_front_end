@@ -339,12 +339,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             print('pressed');
           },
           backgroundColor: GlobalVariables.cartButtonColor,
-          // child: const badges.Badge(
-          // badgeStyle: const badges.BadgeStyle(
-          //   elevation: 0,
-          //   badgeColor: Colors.blue,
-          // ),
-          // badgeContent: Text('2'),
           child: Icon(
             Icons.shopping_cart,
             color: Colors.black,
