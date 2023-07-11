@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mint_front_end/features/user/home/screens/produce_item.dart';
 import 'package:mint_front_end/features/user/home/services/home_service.dart';
+import 'package:badges/badges.dart' as badges;
+import 'package:provider/provider.dart';
 
 import '../../../../common/widgets/loader.dart';
 import '../../../../constants/global_variables.dart';
 import '../../../../models/product.dart';
+import '../../../../providers/user_provider.dart';
 
 class ProduceCategoryScreen extends StatefulWidget {
   static const String routeName = '/produce-category';
@@ -49,6 +52,7 @@ class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final userCartLength = context.watch<UserProvider>().user.calcCartLength();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -120,6 +124,30 @@ class _ProduceCategoryScreenState extends State<ProduceCategoryScreen> {
                     },
                   ),
           ],
+        ),
+      ),
+      floatingActionButton: badges.Badge(
+        badgeStyle: const badges.BadgeStyle(
+          elevation: 0,
+          badgeColor: GlobalVariables.lightGreen,
+        ),
+        badgeContent: Text(
+          userCartLength.toString(),
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        child: FloatingActionButton(
+          onPressed: () {
+            print(userCartLength);
+          },
+          backgroundColor: GlobalVariables.cartButtonColor,
+          child: const Icon(
+            Icons.shopping_cart,
+            color: Colors.black,
+            size: 32,
+          ),
+          // ),
         ),
       ),
     );

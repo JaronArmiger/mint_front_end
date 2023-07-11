@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:provider/provider.dart';
 
 import '../../../../models/product.dart';
 import '../../../../constants/global_variables.dart';
+import '../../../../providers/user_provider.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   static const String routeName = '/product-details';
@@ -36,6 +38,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final userCartLength = context.watch<UserProvider>().user.calcCartLength();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -329,17 +332,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           badgeColor: GlobalVariables.lightGreen,
         ),
         badgeContent: Text(
-          '2',
-          style: TextStyle(
+          userCartLength.toString(),
+          style: const TextStyle(
             fontWeight: FontWeight.w600,
           ),
         ),
         child: FloatingActionButton(
           onPressed: () {
-            print('pressed');
+            print(userCartLength);
           },
           backgroundColor: GlobalVariables.cartButtonColor,
-          child: Icon(
+          child: const Icon(
             Icons.shopping_cart,
             color: Colors.black,
             size: 32,

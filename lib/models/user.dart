@@ -88,4 +88,15 @@ class User {
       cart: cart ?? this.cart,
     );
   }
+
+  int calcCartLength() {
+    int size = 0;
+    int itemQuantity;
+
+    for (int i = 0; i < cart.length; i++) {
+      itemQuantity = cart[i]['quantity'] as int;
+      size += itemQuantity;
+    }
+    return size;
+  }
 }
